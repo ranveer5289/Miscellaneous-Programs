@@ -1,0 +1,75 @@
+--------using xpath expressions without urllib-----------------------
+
+import lxml.html
+doc = lxml.html.parse('http://www.imdb.com/chart/top')
+titles  = doc.xpath('//div[@id="main"]/table//a/text()')
+
+print u'\n'.join(titles)
+
+------------------------------------------------------------------------
+
+--------------using xpath with urllib,urllib2--------------------------------
+
+
+import lxml
+from lxml import etree
+import urllib2
+
+response = urllib2.urlopen('http://www.imdb.com/chart/top')
+html = response.read()
+imdb = etree.HTML(html)
+titles = imdb.xpath('//div[@id="main"]/table//tr//a/text()')
+------------------------------------------------------------------------------
+
+------------------------playing with xml file--------------------------------
+
+
+import lxml
+from lxml import etree
+source_xml = " path to your xml file"
+et = etree.parse(source_xml)
+value = et.xpath("//document/request/pair[name='q']/value/text()")
+print " ".join(value)
+
+--------------------------------------------------------------------------
+
+-------------------------css select----------------------------------
+import lxml.html
+import urllib
+data = urllib.urlopen('file:///C:/Users/ranveer/st.html').read() //contains your html snippet
+doc = lxml.html.fromstring(data)
+elements = doc.cssselect('ul li') // CSSpath[using firebug extension]
+for element in elements:
+      print element.text_content() 
+------------------------------------------------------------------------
+
+from lxml import etree
+from cStringIO import StringIO
+
+xml = """<foo><bar/> baz!</foo>"""
+
+# parse from string
+etree.fromstring(xml)
+
+# parse from file-like; in this case, StringIO
+s = StringIO(xml)
+etree.parse(s)
+
+# parse from URL
+etree.parse("http://example.com/somefile.xml")
+------------------------------------------------------------------------------------------------
+
+#convert html to string representation
+
+import lxml.html as lh
+myString = '<p>Phone Number:</p><p>706-878-8888</p>'
+lh.fromstring(myString).text_content()
+'Phone Number:706-878-8888'
+-------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
