@@ -1,0 +1,6 @@
+In haskell every expression and function must return something so IF being an
+expression in haskell unlike the IF statement in an imperative language so IF
+has to return something therefore, ELSE is a mandatory part of IF in haskell.
+Because ELSE ensures that the expression evaluated returns something.
+
+----------------------------------------------------------------------------------------------------------------------

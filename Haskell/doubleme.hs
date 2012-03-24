@@ -1,0 +1,1 @@
+doubleme x = x+x
