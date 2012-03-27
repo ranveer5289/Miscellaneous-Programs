@@ -110,7 +110,6 @@ class check_spotify
                 IntPtr hwnd = getspotify();
                 int num = tracker.getprocessid();
                 IntPtr hWinEventHook = SetWinEventHook(0x00008000,0x00008001,IntPtr.Zero, procDelegate, 0, 0, 0);
-                //MessageBox.Show("Tracking name changes on HWNDs, close message box to exit.");
 
                 Message msg = new Message();
 
