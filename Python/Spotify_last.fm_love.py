@@ -21,6 +21,7 @@ spotify = Spotify()
 
 # Get current playing track on spotify.
 track_name = spotify.getCurrentTrack()
+#print track_name
 
 # Get current playing artist on spotify.
 artist_name = spotify.getCurrentArtist()
@@ -42,16 +43,17 @@ last_loved_track = str(loved_track_list[0][0])
 
 #Get last loved artist,track name
 artist,track = last_loved_track.split(' - ')
+#print track
 
 
 #Check if track loved previously or not 
 
-if track_name == track:
-        command_2_notify = 'growlnotify /t:"Track: {0}" /n:"Loved Track" /a:"Loved Track" "Artist: {1}"'.format(track,artist)
+if track_name.lower() == track.lower():
+        command_2_notify = 'growlnotify /t:"Track: {0}" /i:"C:\Lastfm.png" /n:"Loved Track" /a:"Loved Track" "Artist: {1}"'.format(track,artist)
         subprocess.call(command_2_notify)
 
 else:
-        command_2_notify = 'growlnotify /n:"Loved Track" /a:"Loved Track" "Track already loved on last.fm"'
+        command_2_notify = 'growlnotify /i:"C:\Lastfm.png" /n:"Loved Track" /a:"Loved Track" "Track already loved on last.fm"'
         subprocess.call(command_2_notify)
 
 
