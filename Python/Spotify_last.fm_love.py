@@ -52,6 +52,6 @@ if track_name == track:
 
 else:
         command_2_notify = 'growlnotify /n:"Loved Track" /a:"Loved Track" "Track already loved on last.fm"'
-         subprocess.call(command_2_notify)
+        subprocess.call(command_2_notify)
 
 
