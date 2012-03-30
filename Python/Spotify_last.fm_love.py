@@ -48,7 +48,7 @@ artist,track = last_loved_track.split(' - ')
 
 #Check if track loved previously or not 
 
-if track_name.lower() != track.lower():
+if track_name.lower() == track.lower():
         command_2_notify = 'growlnotify /t:"Track: {0}" /i:"C:\Lastfm.png" /n:"Loved Track" /a:"Loved Track" "Artist: {1}"'.format(track,artist)
         subprocess.call(command_2_notify)
 
