@@ -1,6 +1,7 @@
 from pytify import Spotify
 import subprocess
 import pylast
+import Notification
 
 #Go to http://www.last.fm/api/account and get the below mentioned fields to
 #authenticate yourself.
@@ -50,14 +51,16 @@ artist,track = last_loved_track.split(' - ')
 print track.lower()
 
 
-#Check if track loved previously or not 
+
+# call Notificatin class from Notification.py to create notification object
+notification = Notification.Notification()
+
+#Check if track loved previously or not than
+#send notification.
 
 if track_name.lower() == track.lower():
-        command_2_notify = 'growlnotify /t:"Track: {0}" /i:"C:\Lastfm.png" /n:"Loved Track" /a:"Loved Track" "Artist: {1} \n\n Playcount: {2}"'.format(track,artist,playcount)
-        subprocess.call(command_2_notify)
 
+        notification.send_Notification(track,artist,playcount,1)
 else:
-        command_2_notify = 'growlnotify /i:"C:\Lastfm.png" /n:"Loved Track" /a:"Loved Track" "Track already loved on last.fm \n\n Playcount :{0}"'.format(playcount)
-        subprocess.call(command_2_notify)
 
-
+        notification.send_Notification(track,artist,playcount,0)
