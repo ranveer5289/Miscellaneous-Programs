@@ -52,7 +52,7 @@ print track.lower()
 
 
 
-# call Notificatin class from Notification.py to create notification object
+# Call Notificatin class from Notification.py to create notification object
 notification = Notification.Notification()
 
 #Check if track loved previously or not than
