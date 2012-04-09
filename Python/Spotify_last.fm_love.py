@@ -57,7 +57,7 @@ if track_name.lower() == track.lower():
         subprocess.call(command_2_notify)
 
 else:
-        command_2_notify = 'growlnotify /i:"C:\Lastfm.png" /n:"Loved Track" /a:"Loved Track" "Track already loved on last.fm"'
+        command_2_notify = 'growlnotify /i:"C:\Lastfm.png" /n:"Loved Track" /a:"Loved Track" "Track already loved on last.fm \n\n Playcount :{0}"'.format(playcount)
         subprocess.call(command_2_notify)
 
 
