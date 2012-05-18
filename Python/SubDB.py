@@ -9,8 +9,6 @@ from urllib2 import URLError
 filename = sys.argv[1]
 print filename
 
-
-
 def get_hash(name):
         readsize = 64 * 1024
         with open(name, 'rb') as f:
