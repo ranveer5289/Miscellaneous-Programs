@@ -42,6 +42,10 @@ set incsearch
 set hlsearch
 set textwidth = 90
 set backupdir=D:\\VimTemp
+set undodir=D:\\VimTemp\\undohist
+set undofile
+set undolevels = 1000 "maximum number of changes that can be undone
+set undoreload = 10000 "maximum number lines to save for undo on a buffer reload
 imap ss System.out.println()
 map <S-Enter> O<Esc>
 map <CR> o<Esc>
