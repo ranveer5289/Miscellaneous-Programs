@@ -34,6 +34,7 @@ set nu
 set autoindent shiftwidth=4
 filetype plugin indent on
 syntax on
+set smarttab
 set expandtab
 set smartindent
 set tabstop = 4
@@ -50,3 +51,4 @@ imap ss System.out.println()
 map <S-Enter> O<Esc>
 map <CR> o<Esc>
 imap <S-C-C> <Esc>
+cmap expl NERDTree
