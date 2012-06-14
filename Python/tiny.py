@@ -37,8 +37,10 @@ def url_shortener():
     
         pass
     
-    tiny_url = str(content['id'])
-    return tiny_url
+    tiny_url = content.get('id')
+
+    if tiny_url:
+         return tiny_url
 
 
 tiny_url = url_shortener()
