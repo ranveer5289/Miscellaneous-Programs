@@ -13,11 +13,10 @@ import zipfile
 
 
 gmail_username = "ranveer.raghu@gmail.com"
-gmail_password = "secretpassword"
+gmail_password = "tqbpzsebeeemcoav"
 
 current_directory = os.getcwd()
 path_to_delete_file = os.path.join(current_directory,"test.zip")
-print path_to_delete_file
 
 parser = argparse.ArgumentParser(description='Send email', add_help=True)
 parser.add_argument("-r", action ="store", dest='toaddr', help="Add recepient address")
