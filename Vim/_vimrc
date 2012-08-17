@@ -1,7 +1,10 @@
-set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
+
+
+"""""""""""-------- VIM FUNCTIONS-------------"""""""""""""""""""""""""""
+
 
 set diffexpr=MyDiff()
 function MyDiff()
@@ -28,27 +31,80 @@ function MyDiff()
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 
-" F9/F10 compile/run default file.
-" F11/F12 compile/run alternate file.
-set nu
-set autoindent shiftwidth=4
+
+"""""""""""----------------AUTOCMD STUFF--------------"""""""""""""""""""
+
+
+"Source vim each time I save it.
+if has("autocmd")
+  autocmd bufwritepost .vimrc source $MYVIMRC
+endif
+
+"Prevent behaviour of <CR>
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+
+
+""""""""""-------------- MISC STUFF---------------""""""""""""""""""""""
+
+
+"AutoSave whem vim loses focus.
+au FocusLost * :wa
+
 filetype plugin indent on
 syntax on
+
+"Show red column according to set textwidth.
+if exists('+colorcolumn') | set colorcolumn=80,120 | endif
+
+
+""""""""""""""--------------------all SET stuff----------"""""""""""""""""""""
+
+
+set nu
+set nocompatible
 set smarttab
 set expandtab
 set smartindent
-set tabstop = 4
+set tabstop=4
+set autoindent shiftwidth=4
 set smartcase
 set incsearch 
 set hlsearch
-set textwidth = 90
+set textwidth=79
 set backupdir=D:\\VimTemp
 set undodir=D:\\VimTemp\\undohist
 set undofile
-set undolevels = 1000 "maximum number of changes that can be undone
-set undoreload = 10000 "maximum number lines to save for undo on a buffer reload
-imap ss System.out.println()
-map <S-Enter> O<Esc>
-map <CR> o<Esc>
-imap <S-C-C> <Esc>
-cmap expl NERDTree
+set undolevels=1000 "maximum number of changes that can be undone
+set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+set runtimepath+=C:\\Program\ Files\\Vim\\bundle
+set modifiable
+set fillchars=vert:¦
+
+
+""""""""""""""""-------------(C/I/N/V)MAP STUFF--------------"""""""""""""""""
+
+
+"Prevent vim to send #comment to column 0 in python.
+inoremap # X<BS>#
+
+"Search highlighted cleared
+nmap //  :nohlsearch<CR>
+
+"Use tab to move b/w split panes
+nmap <tab><tab> <C-w>w
+
+"Open _vimrc in new tab
+nmap ,e :tabedit $MYVIMRC<CR>
+
+"Open a new buffer(quickfix_list) with copen to see occurrences of
+"highlighted word.
+nnoremap <silent> ,/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
+
+"Replace highlighted text template
+cmap re %s//
+
+"So that vim works with typo :Q
+command Q q
+
+"So that vim works with typo :Wq
+command Wq wq
